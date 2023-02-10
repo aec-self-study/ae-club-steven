@@ -3,6 +3,7 @@ SELECT
   name,
   email,
   MIN(orders.created_at) AS first_order_at,
+  MAX(orders.created_at) AS latest_order_at,
   COUNT(DISTINCT orders.id) AS number_of_orders
 FROM
   `analytics-engineers-club.coffee_shop.customers` AS customers
@@ -18,4 +19,4 @@ ORDER BY
   first_order_at
 LIMIT
   5
---jeffrey testing merge conflict new_
+--test comment jeffrey
