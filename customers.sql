@@ -18,4 +18,4 @@ GROUP BY
 ORDER BY
   first_order_at
 LIMIT
-  15
+  15 
