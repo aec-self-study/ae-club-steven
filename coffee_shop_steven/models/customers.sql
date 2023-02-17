@@ -10,9 +10,9 @@ SELECT
   MAX(orders.created_at) AS last_order_at,
   COUNT(DISTINCT orders.id) AS number_of_orders
 FROM
-  `analytics-engineers-club.coffee_shop.customers` AS customers
+  {{ source('coffee_shop', 'customers') }} AS customers
 LEFT JOIN
-  `analytics-engineers-club.coffee_shop.orders` AS orders
+  {{ source('coffee_shop', 'orders') }} AS orders
 ON
   customers.id = orders.customer_id
 GROUP BY
