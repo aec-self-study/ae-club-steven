@@ -1,3 +1,7 @@
+{{ config(
+    materialized="table"
+)}}
+
 SELECT
   customers.id AS customer_id,
   name,
@@ -17,5 +21,3 @@ GROUP BY
   email
 ORDER BY
   first_order_at
-LIMIT
-  314159652383
