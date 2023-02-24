@@ -17,3 +17,24 @@ models:
     columns:
       - name: month_beginning
       - name: number_of_new_customers
+  - name: sales
+    description: A sale of a product to a customer
+    columns:
+      - name: sale_id
+        tests:
+        - unique
+        - not_null
+      - name: ordered_at
+        tests:
+        - not_null
+      - name: ordered_at_week_beginning
+        tests:
+        - not_null
+      - name: customer_id
+        tests:
+        - not_null
+      - name: customer_was_new_or_returning
+        tests:
+        - not_null
+        - accepted_values:
+            values: ['new','returning']

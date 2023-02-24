@@ -11,6 +11,8 @@ sources:
             tests:
               - unique
               - not_null
+          - name: name
+          - name: email
  
       - name: orders
         freshness:
@@ -23,3 +25,65 @@ sources:
             tests:
               - unique
               - not_null
+          - name: created_at
+            tests:
+              - not_null
+          - name: customer_id
+            tests:
+              - not_null
+              - relationships:
+                  to: source('coffee_shop', 'customers')
+                  field: id
+          - name: total
+          - name: address
+          - name: state
+          - name: zip
+
+      - name: order_items
+        columns:
+        - name: id
+          tests:
+            - unique
+            - not_null
+        - name: order_id
+          tests:
+            - not_null
+            - relationships:
+                to: source('coffee_shop', 'orders')
+                field: id
+        - name: product_id
+          tests:
+            - not_null
+            - relationships:
+                to: source('coffee_shop', 'products')
+                field: id
+      
+      - name: product_prices
+        columns:
+        - name: id
+          tests:
+            - unique
+            - not_null
+        - name: product_id
+          tests:
+            - not_null
+            - relationships:
+                to: source('coffee_shop', 'products')
+                field: id
+        - name: price
+        - name: created_at
+          tests:
+            - not_null
+        - name: ended_at
+      
+      - name: products
+        columns:
+        - name: id
+          tests:
+            - unique
+            - not_null
+        - name: name
+        - name: category
+        - name: created_at
+          tests:
+            - not_null
