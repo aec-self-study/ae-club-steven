@@ -1,0 +1,19 @@
+version: 2
+ 
+models:
+  - name: customers
+    description: Cleaned up data for our customers
+    columns:
+      - name: customer_id
+        description: Primary key of the model
+        tests:
+          - unique
+          - not_null
+      - name: first_order_at
+      - name: last_order_at
+      - name: number_of_orders
+  - name: monthly_customers
+    description: Number of new customers by month
+    columns:
+      - name: month_beginning
+      - name: number_of_new_customers
