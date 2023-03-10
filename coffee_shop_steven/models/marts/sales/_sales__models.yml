@@ -39,3 +39,56 @@ models:
         - accepted_values:
             values: ['new','returning']
       - name: revenue
+  - name: pageviews
+    description: A view of a page by a website visitor
+    columns:
+      - name: pageview_id
+        tests:
+          - unique
+          - not_null
+      - name: visitor_id
+        tests:
+          - not_null
+      - name: device_type
+      - name: viewed_at
+        tests:
+          - not_null
+      - name: page_viewed
+        tests:
+          - not_null
+      - name: customer_id
+      - name: user_id
+        tests:
+          - not_null
+      - name: session_id
+        tests:
+          - not_null
+      - name: session_start_time
+        tests:
+          - not_null
+      - name: session_end_time
+        tests:
+          - not_null
+  - name: sessions
+    description: A group of pageviews by the same user which fall no more than 30 minutes apart
+    columns:
+      - name: session_id
+        tests:
+          - unique
+          - not_null
+      - name: user_id
+        tests:
+          - not_null
+      - name: customer_id
+      - name: session_start_time
+        tests:
+          - not_null
+      - name: session_end_time
+        tests:
+          - not_null
+      - name: number_of_pages_visited
+        tests:
+          - not_null
+      - name: purchased
+        tests:
+          - not_null
