@@ -77,6 +77,8 @@ sources:
                 to: source('coffee_shop', 'products')
                 field: id
         - name: price
+          tests:
+            - is_positive
         - name: created_at
           tests:
             - not_null
